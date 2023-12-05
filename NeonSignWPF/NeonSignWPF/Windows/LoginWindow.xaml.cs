@@ -30,17 +30,16 @@ namespace NeonSignWPF.Windows
             var CurrentUserAdmin = AppData.db.Users.FirstOrDefault(u => u.login == login_txt.Text && u.password == password_txt.Password && u.id_role == 1);
             var CurrentUser = AppData.db.Users.FirstOrDefault(u => u.login == login_txt.Text && u.password == password_txt.Password && u.id_role == 2);
 
-            if(CurrentUserAdmin != null)//если админ
+            if(CurrentUserAdmin != null)//если админ - главное окно со страницей админа
             {
                 MainWindow main = new MainWindow();
                 main.Show();
                 this.Close();
-            } else if (CurrentUser != null)//если пользователь
+            } else if (CurrentUser != null)//если пользователь - главное окно со страницей пользователя
             {
                 MainWindow main = new MainWindow();
                 main.Show();
                 this.Close();
-                //создать новое окно для пользователя
             } else if (login_txt.Text == "" || password_txt.Password == "")
             {
                 MessageBox.Show("Заполните все пустые поля", "Пустые поля!");
